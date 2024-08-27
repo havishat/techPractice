@@ -89,4 +89,57 @@ function wordCount(sentence) {
 
 console.log(wordCount('The cat and the hat.'))
 
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+
+
+/**
+ * RGB Set
+ *
+ * Given a string of characters where each character is either 'r', 'g', or 'b',
+ * determine the number of complete sets of 'rgb' that can be made with the
+ * characters.
+ *
+ * Parameters
+ * Input: str {String}
+ * Output: {Integer}
+ *
+ * Constraints
+ * Time: O(N)
+ * Space: O(1)
+ *
+ * Examples
+ * `'rgbrgb' --> 2`
+ * `'rbgrbrgrgbgrrggbbbbrgrgrgrg' --> 7`
+ * `'bbrr' --> 0`
+ */
+
+function rgb(string) {
+    let charMap = {};
+    
+    for(let char of string){
+        if(charMap[char]){
+            charMap[char]++
+        } else {
+            charMap[char] = 1;
+        }
+    }
+    
+    let numOfPairs  = Infinity;
+    
+     if (Object.keys(charMap).length < 3) {
+    return 0;
+  }
+    
+    for(let key in charMap){
+        if(charMap[key] < numOfPairs){
+            numOfPairs = charMap[key]
+        }
+    }
+    
+    return numOfPairs
+}
+
+console.log(rgb('rbgrbrgrgbgrrggbbbbrgrgrgrg'))
+
 
