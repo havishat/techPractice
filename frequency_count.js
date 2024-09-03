@@ -451,6 +451,52 @@ console.log(getDuplicates([3, 2, 3, 2, 3, 3, 4]))
      }
      
      return true
+
+
+     /**
+ *  Anagram Palindrome
+ *
+ *  Given a string, determine if the string can be rearranged to form a palindrome.
+ *
+ *  A palindrome is a word that is the same as its reversed. For example: "racecar"
+ *  and "noon" are palindromes because they match their reversed version
+ *  respectively. On the other hand, "cat" is not a palindrome because "cat"
+ *  does not equal "tac".
+ *
+ *  Parameters
+ *  Input: str {String}
+ *  Output: {Boolean}
+ *
+ *  Constraints
+ *
+ *  Assume the string only contains lowercase letters and no spaces.
+ *
+ *  Time: O(N)
+ *  Space: O(1)
+ *
+ *  Examples
+ *  `"carrace" --> true ("carrace" can be rearranged to "racecar")`
+ *  `"cat" --> false`
+ */
+
+
+ function anagramPalindrome(string) {
+     let arr = new Array(26).fill(0);
+     for(let i=0; i<string.length; i++){
+         arr[string[i].charCodeAt() - 97] += 1
+     }
+     console.log(arr)
+     let numOfOdds = 0;
+     
+     for(let i = 0; i<arr.length; i++){
+         if(arr[i] % 2 !== 0){
+             numOfOdds += 1;
+         }
+     }
+     return numOfOdds < 2;
+ }
+ 
+ console.log(anagramPalindrome('carrace'))
  }
  
  //console.log(anagramPair( "cat", "act" ))
