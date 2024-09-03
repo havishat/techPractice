@@ -236,3 +236,133 @@ function letterSort(string) {
 }
 
 console.log(letterSort('hello'))
+
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+
+console.log("Try programiz.pro");
+
+/**
+ * Character Mode
+ *
+ * Given a string, find the most frequent occurring letter(s) in the string
+ *
+ * Parameters
+ * Input: str {String}
+ * Output: {String}
+ *
+ * Constraints
+ * If more than one letter is tied for the most frequent, return a string of all
+ * the letters in one string.
+ *
+ * Upper case characters should count as lower case, and do not include spaces
+ * ... as characters.
+ *
+ * Time: O(N)
+ * Space: O(N)
+ *
+ * Examples
+ * 'hello' --> 'l'
+ * 'A walk in the park' --> 'a'
+ * 'noon' --> 'no'
+ */
+
+ function characterMode(string) {
+     let charsMap = {}
+     let maxCharsCount = 0;
+     for(let i = 0; i<string.length; i++){
+         if(string[i] !== " "){
+              if(charsMap[string[i].toLowerCase()]){
+             charsMap[string[i].toLowerCase()]++;
+             if(maxCharsCount < charsMap[string[i].toLowerCase()]){
+                 maxCharsCount = charsMap[string[i].toLowerCase()];
+             }
+         } else {
+             charsMap[string[i].toLowerCase()] = 1;
+         }
+         }
+     }
+     let output = "";
+      console.log(charsMap)
+     for(let key in charsMap){
+        
+         if(charsMap[key] === maxCharsCount){
+             output += key
+         }
+     }
+     return output
+}
+
+//console.log(characterMode('A walk in the park'))
+console.log(characterMode('noon'))
+
+function characterMode(string) {
+   let chars = new Array(26).fill(0);
+   let result = "";
+   for (let c = 0; c < string.length; c ++) {
+     if (string[c] !== " ") {
+       chars[string[c].toLowerCase().charCodeAt() - 97] += 1;
+     }
+   }
+   let max_frequency = 0;
+   for (let c = 0; c < chars.length; c ++) {
+     if (chars[c] > max_frequency) {
+       max_frequency = chars[c];
+     }
+   }
+   for (let c = 0; c < chars.length; c ++) {
+     if (chars[c] === max_frequency) {
+       result += String.fromCharCode(c + 97);
+     }
+   }
+   return result;
+ }
+/**
+ * Sort Digits
+ *
+ * Given an integer, sort the digits in ascending order and return the new integer.
+ * Ignore leading zeros.
+ *
+ * Parameters
+ * Input: num {Integer}
+ * Output: {Integer}
+ *
+ * Constraints
+ * Do not convert the integer into a string or other data type.
+ *
+ * Time: O(N) where N is the number of digits.
+ * Space: O(1)
+ *
+ * Examples
+ * 8970 --> 789
+ * 32445 --> 23445
+ * 10101 --> 111
+ */
+
+function sortDigits(n) {
+  let digitCounts = {};
+  let result = 0;
+  while (n > 0) {
+    let digit = n % 10;
+    if (digitCounts[digit] === undefined) {
+      digitCounts[digit] = 1;
+    } else {
+      digitCounts[digit] += 1;
+    }
+    n  = parseInt(n/10)
+  }
+  let power = 0;
+  for (let i = 10; i >= 0; i--) {
+    if (digitCounts[i] !== undefined) {
+      while (digitCounts[i] >= 1) {
+        result += i * Math.pow(10, power);
+        power += 1;
+        digitCounts[i] -= 1;
+      }
+    }
+  }
+  return result;
+}
+
+console.log(sortDigits(8970))
+
