@@ -409,3 +409,49 @@ function getDuplicates(arr) {
 }
 
 console.log(getDuplicates([3, 2, 3, 2, 3, 3, 4]))
+
+/**
+ *  Anagram Pair
+ *
+ *  Given two strings, determine if the strings are anagrams of one another.
+ *
+ *  Two words are anagrams of one another if they contain the same letters.
+ *
+ *  Parameters
+ *  Input: str1 {String}
+ *  Input: str2 {String}
+ *  Output: {Boolean}
+ *
+ *  Constraints
+ *  With N as the length of the first string, and M as the length of the second string.
+ *
+ *  Time: O(N)
+ *  Space: O(N)
+ *
+ *  Examples
+ *  "cat", "act" --> true
+ *  "cat", "dog" --> false
+ *  "racecar", "aaccrres" --> false
+ */
+ 
+ function anagramPair(string1, string2) {
+     let letters = new Array(26).fill(0);
+     for(let i = 0; i<string1.length; i++){
+         letters[string1[i].charCodeAt() - 97] += 1
+     }
+     
+      for(let i = 0; i<string2.length; i++){
+         letters[string2[i].charCodeAt() - 97] -= 1
+     }
+     
+     for(let c= 0; c < letters.length; c++){
+         if(letters[c] != 0){
+             return false
+         }
+     }
+     
+     return true
+ }
+ 
+ //console.log(anagramPair( "cat", "act" ))
+ console.log(anagramPair("cat", "dog"))
