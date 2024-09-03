@@ -366,3 +366,46 @@ function sortDigits(n) {
 
 console.log(sortDigits(8970))
 
+/**
+ *  Get Duplicates
+ *
+ *  Given an array of values, return only the values that have duplicates in the
+ *  array
+ *
+ *  Parameters
+ *  Input: arr {Array}
+ *  Output: {Array}
+ *
+ *  Constraints
+ *  Time: O(N)
+ *  Space: O(N)
+ *
+ *  Examples
+ *  [1, 2, 4, 2] --> [2]
+ *  [3, 2, 3, 2, 3, 3, 4] --> [3, 2]
+ *  [1, 2, 3, 4] --> []
+ */
+
+function getDuplicates(arr) {
+  // YOUR WORK HERE
+  let duplicatesMap = {};
+  
+  for(const num of arr){
+      if(duplicatesMap[num]){ 
+          duplicatesMap[num]++
+      } else {
+          duplicatesMap[num] = 1
+      }
+  }
+  
+  let result = [];
+  
+  for(let key in duplicatesMap){
+      if(duplicatesMap[key] > 1){
+          result.push(parseInt(key))
+      }
+  }
+  return result
+}
+
+console.log(getDuplicates([3, 2, 3, 2, 3, 3, 4]))
