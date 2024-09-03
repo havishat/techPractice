@@ -142,4 +142,97 @@ function rgb(string) {
 
 console.log(rgb('rbgrbrgrgbgrrggbbbbrgrgrgrg'))
 
+/**
+ * Missing Number
+ *
+ * Given range of 1 to N and an array of unique integers that are within that
+ * range, return the missing integers not found in the array
+ *
+ * Parameters
+ * Input: n {Integer}
+ * Input: arr {Array of Integers}
+ * Output: {Array of Integers}
+ *
+ * Constraints
+ * Time: O(N)
+ * Space: O(N)
+ *
+ * Examples
+ * `4, [1, 4, 2] --> [3]`
+ * `8, [4, 7, 1, 6] --> [2, 3, 5, 8]`
+ * `6, [6, 4, 2, 1] --> [3, 5]`
+ */
 
+function missingNumber(n, arr) {
+  let result = [];
+  for(let i = 1; i<n + 1; i++){
+    
+    if(!arr.includes(i)){
+      result.push(i)
+    }
+  }
+  
+  console
+  return result
+  // YOUR WORK HERE
+}
+
+console.log(missingNumber(8, [4, 7, 1, 6]))
+
+function missingNumber(n, arr) {
+  let count = {};
+  let result = [];
+  for (let char = 0; char < arr.length; char ++) {
+    if (count[arr[char]] === undefined) {
+      count[arr[char]] = 1;
+    } else {
+      count[arr[char]] += 1;
+    }
+  }
+  for (let  i= 1; i < n + 1; i ++) {
+    if(count[i] === undefined) {
+      result.push(i);
+    }
+  }
+  return result;
+}
+
+
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+
+console.log("Try programiz.pro");
+
+/**
+ * Letter Sort
+ *
+ * Given a string of letters, return the letters in sorted order.
+ *
+ * Parameters
+ * Input: str {String}
+ * Output: {String}
+ *
+ * Constraints
+ * Time: O(N)
+ * Space: O(N)
+ *
+ * Examples
+ * `hello --> ehllo`
+ * `whiteboard --> abdehiortw`
+ * `one --> eno`
+ */
+
+function letterSort(string) {
+    let chars = new Array(26).fill(0);
+    let sortedString = "";
+    for(let c = 0; c<string.length; c++){
+        chars[string[c].charCodeAt() - 97] += 1;
+    }
+    
+    for(let i=0; i<chars.length; i++){
+        sortedString += String.fromCharCode(97+ i).repeat(chars[i])
+    }
+    return sortedString
+}
+
+console.log(letterSort('hello'))
