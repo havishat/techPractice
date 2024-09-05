@@ -98,3 +98,28 @@ function closestValue(arr, target) {
 
 console.log(closestValue([1, 10, 22, 59, 67, 72, 100], 70))
 
+function squareRoot(n) {
+    if(n=== 1 || n === 0){
+        return n
+    }
+    let low = 0; 
+    let high = n;
+    let result = 0;
+    let sq = 0; 
+    let mid = 0;
+    while(low <= high){
+        mid = (low + high) / 2;
+        sq = mid * mid;
+        if(sq === n) {
+            return mid
+        } else if (sq < n) {
+            low = mid + .0000001;
+            result = mid;
+        } else {
+            high = mid - .0000001;
+        }
+    }
+    return result.toFixed(6);
+}
+
+console.log(squareRoot(4))
